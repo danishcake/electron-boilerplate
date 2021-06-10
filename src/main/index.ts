@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 /// #if DEV_MODE
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 /// #endif
 import * as path from 'path';
 import { dialog }  from 'electron';
@@ -37,7 +37,7 @@ async function createWindow() {
 
   try {
     /// #if DEV_MODE
-    await installExtension(REACT_DEVELOPER_TOOLS);
+    await installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]);
     /// #endif
 
     await createWindow();
