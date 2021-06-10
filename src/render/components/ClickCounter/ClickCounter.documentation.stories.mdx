@@ -1,0 +1,16 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { ClickCounterComponent } from './ClickCounterComponent';
+
+
+<Meta title="Components/ClickCounter/Documentation" component={ClickCounterComponent} />
+
+# Click Counter Component
+
+This component handles clicks by incrementing a counter.
+The asynchronous button increments five times, once every 250ms.
+
+<Canvas>
+  <Story id="components-clickcounter--zero-clicks" />
+</Canvas>
+
+<ArgsTable of={ClickCounterComponent} />

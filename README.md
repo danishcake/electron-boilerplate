@@ -13,14 +13,9 @@ Run `yarn watch` and `yarn start` in two separate terminals.
 
 ## TODO
 Stub an Electron app with
-* redux
-* Time travelling dev tools
-* Webpack
-* typescript
 * eslint
-* Vscode tasks and debugging
 * Some sort of auto upgrade chore thing
 * Audit job
 * Dockerized build
-* Storybook
 * Prettier
+* Fancy modern CSS library
