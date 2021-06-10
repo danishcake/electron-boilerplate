@@ -8,7 +8,7 @@ const { history, store } = createStore();
 
 render(
   <Provider store={store}>
-    <Root/>
+    <Root history={history}/>
   </Provider>,
   document.getElementById('root')
 );
