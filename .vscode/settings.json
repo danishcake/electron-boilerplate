@@ -4,4 +4,13 @@
   "files.trimTrailingWhitespace": true,
   "typescript.preferences.quoteStyle": "single",
   "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "eslint.options": {
+    "configFile": "./.buildconfig/.eslintrc"
+  },
+  "prettier.configPath": "./.buildconfig/.prettierrc",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

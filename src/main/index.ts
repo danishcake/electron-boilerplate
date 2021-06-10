@@ -3,7 +3,7 @@ import { app, BrowserWindow } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 /// #endif
 import * as path from 'path';
-import { dialog }  from 'electron';
+import { dialog } from 'electron';
 
 async function createWindow() {
   // Create the browser window.
@@ -28,7 +28,6 @@ async function createWindow() {
   /// #endif
 }
 
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -42,9 +41,8 @@ async function createWindow() {
 
     await createWindow();
   } catch (e) {
-    dialog.showErrorBox('Startup error', e.message)
+    dialog.showErrorBox('Startup error', e.message);
   }
-
 
   app.on('activate', async () => {
     // On macOS it's common to re-create a window in the app when the
@@ -57,6 +55,6 @@ async function createWindow() {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
 });

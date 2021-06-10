@@ -5,7 +5,6 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { clickCountReducer } from './ClickCount';
 import { PickAndFlatten } from '../utils/TypeManipulation';
 
-
 /**
  * Creates the root reducer
  * @param history History object for routing purposes
@@ -15,12 +14,13 @@ function createRootReducer(history: History) {
   return combineReducers({
     router: connectRouter(history),
     clickCount: clickCountReducer
-  })
+  });
 }
 
 /**
  * Creates the redux store
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createStore() {
   // Create a history object
   const history = createBrowserHistory();
@@ -29,8 +29,9 @@ export function createStore() {
   const rootReducer = createRootReducer(history);
 
   // Create the store
-  const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-  const store = reduxCreateStore(rootReducer, composeEnhancers(applyMiddleware(thunk, routerMiddleware(history))))
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const store = reduxCreateStore(rootReducer, composeEnhancers(applyMiddleware(thunk, routerMiddleware(history))));
 
   // The history object is required by routing components, to expose that too
   return { history, store };
@@ -46,4 +47,4 @@ export function createStore() {
  *
  * This yields the root state type
  */
-export type RootState = ReturnType<PickAndFlatten<PickAndFlatten<ReturnType<typeof createStore>, 'store'>, 'getState'>>
+export type RootState = ReturnType<PickAndFlatten<PickAndFlatten<ReturnType<typeof createStore>, 'store'>, 'getState'>>;

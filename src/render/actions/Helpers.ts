@@ -1,4 +1,4 @@
-import { Action as ReduxAction } from 'redux'
+import { Action as ReduxAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { RootState } from 'render/reducers';
 
@@ -8,7 +8,7 @@ export type ActionType = string;
 /**
  * An action without a payload
  */
-export interface Action extends ReduxAction<ActionType> {}
+export type Action = ReduxAction<ActionType>;
 
 /**
  * An action with a payload of type T
@@ -30,7 +30,6 @@ interface ActionCreatorVoid {
   // Tests if an action was created by this ActionCreator
   test(action: Action): boolean;
 }
-
 
 /**
  * An action creator for an Action with payload of type T
@@ -92,7 +91,7 @@ export const actionCreatorVoid = (type: ActionType): ActionCreatorVoid => {
  *   console.log(action.error);
  * }
  */
- export const actionCreator = <T>(type: ActionType): ActionCreator<T> => {
+export const actionCreator = <T>(type: ActionType): ActionCreator<T> => {
   return Object.assign((payload: T) => ({ type, payload }), {
     type,
     test(action: Action): action is ActionWithPayload<T> {
@@ -112,10 +111,10 @@ export const actionCreatorVoid = (type: ActionType): ActionCreatorVoid => {
  *   }
  * }
  */
-export type AsyncActionCreator = ThunkAction<void, RootState, unknown, Action | ActionWithPayload<any>>;
+export type AsyncActionCreator = ThunkAction<void, RootState, unknown, Action | ActionWithPayload<unknown>>;
 
 /**
  * Async dispatch type
  * Use this as the type for dispatch when mapping dispatchToProps
  */
- export type Dispatch = ThunkDispatch<RootState, unknown, Action | ActionWithPayload<any>>;
+export type Dispatch = ThunkDispatch<RootState, unknown, Action | ActionWithPayload<unknown>>;

@@ -8,9 +8,13 @@ import { ClickCounterContainer } from '../components/ClickCounter/ClickCounterCo
 export const CountPage: React.FunctionComponent = () => {
   const history = useHistory();
 
-  return (<>
+  return (
+    <>
       <h1>Click counter</h1>
       <ClickCounterContainer />
-      <button type='button' onClick={() => history.goBack()}>Home</button>
-    </>);
+      <button type='button' onClick={() => history.goBack()}>
+        Home
+      </button>
+    </>
+  );
 };

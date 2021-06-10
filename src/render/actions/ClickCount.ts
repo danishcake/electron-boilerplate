@@ -11,10 +11,9 @@ export const IncrementClickCount = actionCreator<number>('INCREMENT_CLICK_COUNT'
  * @param by The number of times to increase
  */
 export const IncrementClickCountAsync = (by: number): AsyncActionCreator => {
-  return async (dispatch: Dispatch, getState: () => RootState) => {
-
+  return async (dispatch: Dispatch, _getState: () => RootState) => {
     for (let i = 0; i < by; i++) {
-      await new Promise(resolve => setTimeout(resolve, 250));
+      await new Promise((resolve) => setTimeout(resolve, 250));
       dispatch(IncrementClickCount(1));
     }
   };

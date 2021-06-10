@@ -5,7 +5,8 @@
  * type IntersectionType = UnionToIntersection<UnionType>
  *                       = {a: string} & {b: number}
  */
-export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
 
 /**
  * Given a type, picks a single key from it similarly to using the standard Pick mapping,
@@ -17,4 +18,4 @@ export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) ex
  * type Flattened = PickAndFlatten<Base, 'a'>
  *                = number
  */
- export type PickAndFlatten<T, K extends keyof T> = UnionToIntersection<T[K]>;
+export type PickAndFlatten<T, K extends keyof T> = UnionToIntersection<T[K]>;

@@ -7,7 +7,7 @@ import { CountPage } from './pages/CountPage';
 import { SplashPage } from './pages/SplashPage';
 
 interface Props {
-  history: History
+  history: History;
 }
 
 const Root: React.FunctionComponent<Props> = (props: Props) => {
@@ -15,8 +15,8 @@ const Root: React.FunctionComponent<Props> = (props: Props) => {
     <div>
       <ConnectedRouter history={props.history}>
         <Switch>
-          <Route exact path='/count' component={CountPage}/>
-          <Route component={SplashPage}/>
+          <Route exact path='/count' component={CountPage} />
+          <Route component={SplashPage} />
         </Switch>
       </ConnectedRouter>
     </div>

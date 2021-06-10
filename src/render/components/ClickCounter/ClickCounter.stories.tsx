@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { ClickCounterComponent, Props } from './ClickCounterComponent'
-
+import { ClickCounterComponent, Props } from './ClickCounterComponent';
 
 export default {
   title: 'Components/ClickCounter',
