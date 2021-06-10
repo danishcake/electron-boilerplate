@@ -6,15 +6,17 @@ export interface OwnProps {
 }
 
 const Child: React.FunctionComponent<OwnProps> = (props: OwnProps) => {
+  const [count, setCount] = React.useState(0);
+
   return (
-    <div>Hello world {props.suffix}</div>
+    <button onClick={() => setCount(count + 1)}>Button #{props.suffix} has been clicked {count} times</button>
   );
 };
 
 const Root: React.FunctionComponent = () => {
   return (
     <div>
-      <Child suffix='3'/>
+      <Child suffix='1'/>
       <Child suffix='2'/>
     </div>
   );

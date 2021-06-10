@@ -36,7 +36,12 @@ const devRenderer = {
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     './render/index.tsx'
-  ]
+  ],
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    }
+  }
 };
 
 module.exports = [

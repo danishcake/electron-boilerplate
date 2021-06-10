@@ -6,14 +6,14 @@ This boilerplate provides
 * Dockerized builds
 
 ## Usage from Visual Studio Code
+Run the `watch` task by pressing `ctnl-b`, then start debugging by pressing F5.
+
 ## Usage from command line
-TODO
+Run `yarn watch` and `yarn start` in two separate terminals.
 
 ## TODO
 Stub an Electron app with
-* react
 * redux
-* hot loading
 * Time travelling dev tools
 * Webpack
 * typescript

@@ -1,5 +1,9 @@
-import { app, BrowserWindow } from "electron";
-import * as path from "path";
+import { app, BrowserWindow } from 'electron';
+/// #if DEV_MODE
+import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+/// #endif
+import * as path from 'path';
+import { dialog }  from 'electron';
 
 async function createWindow() {
   // Create the browser window.
@@ -13,10 +17,14 @@ async function createWindow() {
 
   /// #if DEV_MODE
   // In development mode load the page from webpack-dev-server
-  await mainWindow.loadURL('http://localhost:3000/index.html');
+  try {
+    await mainWindow.loadURL('http://localhost:3000/index.html');
+  } catch (e) {
+    dialog.showErrorBox('Startup error', "Startup error - did you forget to run 'yarn start'?\n" + e.message);
+  }
   /// #else
   // In release mode load the page from the asar
-  await mainWindow.loadFile(path.join(__dirname, "index.html"));
+  await mainWindow.loadFile(path.join(__dirname, 'index.html'));
   /// #endif
 }
 
@@ -26,9 +34,19 @@ async function createWindow() {
 // Some APIs can only be used after this event occurs.
 (async () => {
   await app.whenReady();
-  await createWindow();
 
-  app.on("activate", async () => {
+  try {
+    /// #if DEV_MODE
+    await installExtension(REACT_DEVELOPER_TOOLS);
+    /// #endif
+
+    await createWindow();
+  } catch (e) {
+    dialog.showErrorBox('Startup error', e.message)
+  }
+
+
+  app.on('activate', async () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) {
