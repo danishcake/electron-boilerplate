@@ -8,11 +8,32 @@
     "react",
     "redux"
   ],
+  "main": "./dist/main.bundle.js",
   "author": "Edward Woolhouse",
   "license": "ISC",
+  "build": {
+    "appId": "com.electronboilerplate",
+    "productName": "Electron boilerplate",
+    "directories": {
+      "output": "packaged"
+    },
+    "files": [
+      "dist/",
+      "node_modules/"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "zip"
+        },
+        {
+          "target": "nsis"
+        }
+      ]
+    }
+  },
   "dependencies": {
     "connected-react-router": "^6.9.1",
-    "electron": "^13.1.1",
     "history": "^4.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -46,6 +67,8 @@
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
     "babel-loader": "^8.2.2",
+    "electron": "^13.1.1",
+    "electron-builder": "^22.10.5",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
@@ -71,6 +94,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint ./src --ext .ts,.tsx --config ./.buildconfig/.eslintrc",
-    "prettier": "prettier --config ./.buildconfig/.prettierrc ./src/**/*.ts ./src/**/*.tsx --write"
+    "prettier": "prettier --config ./.buildconfig/.prettierrc ./src/**/*.ts ./src/**/*.tsx --write",
+    "package": "yarn build-prod && electron-builder"
   }
 }

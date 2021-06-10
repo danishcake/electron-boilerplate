@@ -6,11 +6,7 @@ const ifdefOptions = {
 
 const common = require('./webpack.common')(ifdefOptions);
 const prod = {
-  mode: 'production',
-  devtool: 'none'
+  mode: 'production'
 };
 
-module.exports = [
-  merge(common.main, prod),
-  merge(common.renderer, prod)
-];
+module.exports = [merge(common.main, prod), merge(common.renderer, prod)];
